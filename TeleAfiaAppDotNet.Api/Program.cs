@@ -40,59 +40,47 @@ using TeleAfiaAppDotNet.Application.UserTypesManagement.Commands.AddUserType;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Configure DbContext with SQL Server
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Add MediatR for handling commands and queries
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 
-// Register AutoMapper
-builder.Services.AddAutoMapper(typeof(Program)); // Adjust with appropriate AutoMapper profile or class
+builder.Services.AddAutoMapper(typeof(Program));
 
-// Register command and query handlers
 builder.Services.AddTransient<IRequestHandler<RegisterUserCommand, RegisterResponse>, RegisterUserCommandHandler>();
 builder.Services.AddTransient<IRequestHandler<LoginQuery, LoginResponse>, LoginQueryHandler>();
 builder.Services.AddTransient<IRequestHandler<ForgotPasswordCommand, ForgotPasswordResponse>, ForgotPasswordCommandHandler>();
 builder.Services.AddTransient<IRequestHandler<ResetPasswordCommand, ResetPasswordResponse>, ResetPasswordCommandHandler>();
 
-// User operations
 builder.Services.AddTransient<IRequestHandler<GetUserQuery, GetUserResponse>, GetUserQueryHandler>();
 builder.Services.AddTransient<IRequestHandler<GetAllUsersQuery, List<User>>, GetAllUsersQueryHandler>();
 builder.Services.AddTransient<IRequestHandler<UpdateUserCommand, UpdateUserResponse>, UpdateUserCommandHandler>();
 builder.Services.AddTransient<IRequestHandler<DeleteUserCommand, DeleteUserResponse>, DeleteUserCommandHandler>();
 
-// User Roles operations
 builder.Services.AddTransient<IRequestHandler<AddRoleCommand, UserRoleResponse>, AddRoleCommandHandler>();
 builder.Services.AddTransient<IRequestHandler<UpdateRoleCommand, UserRoleResponse>, UpdateRoleCommandHandler>();
 builder.Services.AddTransient<IRequestHandler<DeleteRoleCommand, UserRoleResponse>, DeleteRoleCommandHandler>();
 builder.Services.AddTransient<IRequestHandler<GetRoleQuery, List<Role>>, GetRoleQueryHandler>();
 
-// User Types operations
 builder.Services.AddTransient<IRequestHandler<GetUserTypeQuery, List<UserType>>, GetUserTypeQueryHandler>();
 builder.Services.AddTransient<IRequestHandler<AddUserTypeCommand, UserTypeResponse>, AddUserTypeCommandHandler>();
 builder.Services.AddTransient<IRequestHandler<UpdateUserTypeCommand, UserTypeResponse>, UpdateUserTypeCommandHandler>();
 builder.Services.AddTransient<IRequestHandler<DeleteUserTypeCommand, UserTypeResponse>, DeleteUserTypeCommandHandler>();
 
-// Register repositories
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IUserTypeRepository, UserTypeRepository>();
 builder.Services.AddScoped<IPractitionerTypeRepository, PractitionerTypeRepository>();
 builder.Services.AddScoped<IPractitionerRepository, PractitionerRepository>();
 
-// Register JwtSettings from appsettings.json
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
 
-// Register JwtTokenGenerator
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 
-// Configure JWT authentication
 var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -106,13 +94,12 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret)),
             ValidateLifetime = true,
-            ClockSkew = TimeSpan.Zero // Adjust if necessary
+            ClockSkew = TimeSpan.Zero
         };
     });
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
