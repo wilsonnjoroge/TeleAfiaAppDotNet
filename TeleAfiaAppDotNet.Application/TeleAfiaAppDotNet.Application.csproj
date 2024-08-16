@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TeleAfiaAppDotNet.Contracts\TeleAfiaAppDotNet.Contracts.csproj" />
+    <ProjectReference Include="..\TeleAfiaAppDotNet.Domain\TeleAfiaAppDotNet.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

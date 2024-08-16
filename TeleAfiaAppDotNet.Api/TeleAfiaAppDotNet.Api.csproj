@@ -9,8 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.8" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TeleAfiaAppDotNet.Application\TeleAfiaAppDotNet.Application.csproj" />
+    <ProjectReference Include="..\TeleAfiaAppDotNet.Contracts\TeleAfiaAppDotNet.Contracts.csproj" />
+    <ProjectReference Include="..\TeleAfiaAppDotNet.Infrastructure\TeleAfiaAppDotNet.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

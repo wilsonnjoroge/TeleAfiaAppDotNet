@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TeleAfiaAppDotNet.Domain\TeleAfiaAppDotNet.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
