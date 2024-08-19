@@ -1,7 +1,7 @@
 ﻿using TeleAfiaAppDotNet.Contracts.UserRoleAndTypeManagementDTOs.UserTypeDTOs;
 using TeleAfiaAppDotNet.Domain.RolesAndTypesAggregate.RolesAndTypesEntity;
 
-namespace TeleAfiaAppDotNet.Application.Interfaces.UserRoleAndTypeRepositories
+namespace TeleAfiaAppDotNet.Application.Interfaces
 {
     public interface IUserTypeRepository
     {

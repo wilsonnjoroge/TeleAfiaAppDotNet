@@ -1,9 +1,9 @@
 ﻿using MediatR;
-using EquityAfia.UserManagement.Application.Authentication.Common;
 using TeleAfiaAppDotNet.Contracts.AuthenticationDTOs.RegisterUserDTOs;
 using TeleAfiaAppDotNet.Domain.UserAggregate.UsersEntities;
 using TeleAfiaAppDotNet.Application.Interfaces;
-using TeleAfiaAppDotNet.Application.Interfaces.UserRoleAndTypeRepositories;
+using TeleAfiaAppDotNet.Application.Authentication.Common;
+using TeleAfiaAppDotNet.Domain.Message;
 
 
 namespace TeleAfiaAppDotNet.Application.Authentication.Commands.Register.RegisterUser
@@ -13,15 +13,18 @@ namespace TeleAfiaAppDotNet.Application.Authentication.Commands.Register.Registe
         private readonly IUserRepository _userRepository;
         private readonly IRoleRepository _roleRepository;
         private readonly IJwtTokenGenerator _jwtTokenGenerator;
+        private readonly IEmailService _emailService;
 
         public RegisterUserCommandHandler(
             IUserRepository userRepository,
             IRoleRepository roleRepository,
-            IJwtTokenGenerator jwtTokenGenerator)
+            IJwtTokenGenerator jwtTokenGenerator,
+            IEmailService emailService)
         {
             _userRepository = userRepository;
             _roleRepository = roleRepository;
             _jwtTokenGenerator = jwtTokenGenerator;
+            _emailService = emailService;
         }
 
         public async Task<RegisterResponse> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
@@ -62,6 +65,10 @@ namespace TeleAfiaAppDotNet.Application.Authentication.Commands.Register.Registe
 
                 // Save user to repository
                 await _userRepository.AddUserAsync(user);
+
+                var message = new Message(new[] { userDto.Email }, "Registration", "Welcome to teleafia platform");
+
+                _emailService.SendEmail(message);
 
                 // Create the response
                 var response = new RegisterResponse

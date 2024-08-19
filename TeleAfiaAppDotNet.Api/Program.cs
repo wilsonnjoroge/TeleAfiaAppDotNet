@@ -4,7 +4,6 @@ using System.Reflection;
 using TeleAfiaAppDotNet.Application.Authentication.Commands.ForgotPassword;
 using TeleAfiaAppDotNet.Application.Authentication.Commands.Register.RegisterUser;
 using TeleAfiaAppDotNet.Application.Authentication.Commands.ResetPassword;
-using TeleAfiaAppDotNet.Application.Interfaces.UserRoleAndTypeRepositories;
 using TeleAfiaAppDotNet.Application.Interfaces;
 using TeleAfiaAppDotNet.Application.UserCRUD.Commands.DeleteUser;
 using TeleAfiaAppDotNet.Application.UserCRUD.Commands.UpdateUser;
@@ -37,12 +36,20 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using TeleAfiaAppDotNet.Application.Authentication.Queries.LogIn;
 using TeleAfiaAppDotNet.Application.UserTypesManagement.Commands.AddUserType;
+using TeleAfiaPersonal.Infrastructure.EmailSender;
+using Microsoft.Extensions.Configuration;
+using TeleAfiaAppDotNet.Domain.Email;
 
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Email Configuration
+var emailConfig = configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>();
+builder.Services.AddSingleton(emailConfig);
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -76,6 +83,7 @@ builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IUserTypeRepository, UserTypeRepository>();
 builder.Services.AddScoped<IPractitionerTypeRepository, PractitionerTypeRepository>();
 builder.Services.AddScoped<IPractitionerRepository, PractitionerRepository>();
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
 

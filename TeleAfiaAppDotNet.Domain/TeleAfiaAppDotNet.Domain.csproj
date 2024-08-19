@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="BCrypt.Net" Version="0.1.0" />
+    <PackageReference Include="MimeKit" Version="4.7.1" />
   </ItemGroup>
 
 </Project>

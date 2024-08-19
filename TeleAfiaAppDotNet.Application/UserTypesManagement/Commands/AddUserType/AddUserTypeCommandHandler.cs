@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using TeleAfiaAppDotNet.Application.Interfaces.UserRoleAndTypeRepositories;
+using TeleAfiaAppDotNet.Application.Interfaces;
 using TeleAfiaAppDotNet.Contracts.UserRoleAndTypeManagementDTOs.UserTypeDTOs;
 using TeleAfiaAppDotNet.Domain.RolesAndTypesAggregate.RolesAndTypesEntity;
 

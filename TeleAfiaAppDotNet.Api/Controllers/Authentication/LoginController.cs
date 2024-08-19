@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using EquityAfia.UserManagement.Application.Authentication.Queries.LogIn;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using TeleAfiaAppDotNet.Application.Authentication.Queries.LogIn;
 using TeleAfiaAppDotNet.Contracts.AuthenticationDTOs.LoginDTOs;
 
 namespace TeleAfiaAppDotNet.Api.Controllers.Authentication
