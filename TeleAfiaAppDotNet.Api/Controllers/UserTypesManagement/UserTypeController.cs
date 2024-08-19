@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using EquityAfia.UserManagement.Application.UserTypesManagement.Commands.AddUserType;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using TeleAfiaAppDotNet.Application.UserTypesManagement.Commands.AddUserType;
 using TeleAfiaAppDotNet.Application.UserTypesManagement.Commands.DeleteUserType;
 using TeleAfiaAppDotNet.Application.UserTypesManagement.Commands.UpdateUserType;
 using TeleAfiaAppDotNet.Application.UserTypesManagement.Queries.GetUserTypes;

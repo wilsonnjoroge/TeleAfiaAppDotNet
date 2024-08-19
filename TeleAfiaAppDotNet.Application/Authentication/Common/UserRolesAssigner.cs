@@ -1,9 +1,8 @@
 ﻿using TeleAfiaAppDotNet.Application.Interfaces;
-using TeleAfiaAppDotNet.Application.Interfaces.UserRoleAndTypeRepositories;
 using TeleAfiaAppDotNet.Domain.RolesAndTypesAggregate.RolesAndTypesEntity;
 using TeleAfiaAppDotNet.Domain.UserAggregate.UsersEntities;
 
-namespace EquityAfia.UserManagement.Application.Authentication.Common
+namespace TeleAfiaAppDotNet.Application.Authentication.Common
 {
     public static class UserRolesAssigner
     {

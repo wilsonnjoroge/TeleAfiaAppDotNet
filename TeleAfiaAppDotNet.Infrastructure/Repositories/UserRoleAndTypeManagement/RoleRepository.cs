@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TeleAfiaAppDotNet.Application.Interfaces.UserRoleAndTypeRepositories;
+using TeleAfiaAppDotNet.Application.Interfaces;
 using TeleAfiaAppDotNet.Domain.RolesAndTypesAggregate.RolesAndTypesEntity;
 using TeleAfiaAppDotNet.Infrastructure.Data;
 

@@ -1,6 +1,6 @@
 ﻿using TeleAfiaAppDotNet.Contracts.UserRoleAndTypeManagementDTOs.PractitionerTypeDTOs;
 
-namespace TeleAfiaAppDotNet.Application.Interfaces.UserRoleAndTypeRepositories
+namespace TeleAfiaAppDotNet.Application.Interfaces
 {
     public interface IPractitionerTypeRepository
     {
