@@ -5,7 +5,7 @@ using TeleAfiaAppDotNet.Contracts.UserRoleAndTypeManagementDTOs.UserTypeDTOs;
 using TeleAfiaAppDotNet.Domain.RolesAndTypesAggregate.RolesAndTypesEntity;
 using TeleAfiaAppDotNet.Infrastructure.Data;
 
-namespace TeleAfiaAppDotNet.Infrastructure.Repositories.UserRoleAndTypeManagement
+namespace TeleAfiaAppDotNet.Infrastructure.Repositories
 {
     public class UserTypeRepository : IUserTypeRepository
     {

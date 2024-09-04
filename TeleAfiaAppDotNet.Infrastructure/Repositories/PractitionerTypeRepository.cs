@@ -6,7 +6,7 @@ using TeleAfiaAppDotNet.Contracts.UserRoleAndTypeManagementDTOs.PractitionerType
 using TeleAfiaAppDotNet.Domain.RolesAndTypesAggregate.RolesAndTypesEntity;
 using TeleAfiaAppDotNet.Infrastructure.Data;
 
-namespace TeleAfiaAppDotNet.Infrastructure.Repositories.UserRoleAndTypeManagement
+namespace TeleAfiaAppDotNet.Infrastructure.Repositories
 {
     public class PractitionerTypeRepository : IPractitionerTypeRepository
     {
