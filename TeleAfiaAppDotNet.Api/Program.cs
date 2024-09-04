@@ -28,7 +28,6 @@ using TeleAfiaAppDotNet.Domain.RolesAndTypesAggregate.RolesAndTypesEntity;
 using TeleAfiaAppDotNet.Domain.UserAggregate.UsersEntities;
 using TeleAfiaAppDotNet.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using TeleAfiaAppDotNet.Infrastructure.Repositories.UserRoleAndTypeManagement;
 using TeleAfiaAppDotNet.Infrastructure.Repositories;
 using TeleAfiaAppDotNet.Infrastructure.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
