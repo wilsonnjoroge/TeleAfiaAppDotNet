@@ -19,6 +19,7 @@ namespace TeleAfiaAppDotNet.Application.Authentication.Commands.ForgotPassword
         {
             try
             {
+            // initialize the request 
                 var Request = request.ForgotPasswordRequest;
                 var user = await _repository.GetUserByEmailAsync(Request.Email);
 
