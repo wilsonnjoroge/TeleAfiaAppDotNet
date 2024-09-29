@@ -23,6 +23,7 @@ namespace TeleAfiaAppDotNet.Application.Authentication.Commands.ForgotPassword
                 var Request = request.ForgotPasswordRequest;
                 var user = await _repository.GetUserByEmailAsync(Request.Email);
 
+                // check the user
                 if (user == null)
                 {
                     throw new UnauthorizedAccessException("User not found");
