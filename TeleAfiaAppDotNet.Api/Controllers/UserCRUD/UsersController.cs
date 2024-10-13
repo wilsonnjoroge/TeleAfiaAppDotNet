@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+I'm﻿using AutoMapper;
 
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -11,13 +11,15 @@ using TeleAfiaAppDotNet.Contracts.UserCrudDTOs.UpdateUserDTOs;
 
 namespace TeleAfiaAppDotNet.Api.Controllers.UserCRUD
 {
-    [ApiController]
+    [ApiController] // controller 
     [Route("Users")]
     public class UsersController : ControllerBase
     {
+        // Dependency injection 
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
 
+        // Constructor based injection 
         public UsersController(IMediator mediator, IMapper mapper)
         {
             _mediator = mediator;
