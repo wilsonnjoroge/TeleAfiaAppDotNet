@@ -19,7 +19,7 @@ namespace TeleAfiaAppDotNet.Infrastructure.Data
         public DbSet<Role> Roles { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<PractitionerType> PractitionerTypes { get; set; }
-        public DbSet<UserType> UserTypes { get; set; } // Rename to Types to avoid collision and confusion
+        public DbSet<UserType> UserTypes { get; set; } 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
